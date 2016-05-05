@@ -1,0 +1,79 @@
+{
+  "id": "9937AA5E-AF53-43A2-AE90-F91C7045A89F",
+  "name": "OctopusDeployer",
+  "friendlyName": "Octopus Deployer",
+  "description": "Triggers a project deployment in Octopus",
+  "helpMarkDown": "",
+  "category": "Deploy",
+  "author": "B Stilson",
+  "version": {
+    "Major": 1,
+    "Minor": 4,
+    "Patch": 2
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Octopus Deployer",
+  "inputs": [
+    {
+      "name": "octoProjectName",
+      "type": "string",
+      "label": "Octopus project to deploy",
+      "defaultValue": "",
+      "helpMarkDown": "The project name setup in Octopus that should be triggered by this task.",
+      "required": true
+    },
+    {
+      "name": "octoEnvironmentName",
+      "type": "string",
+      "label": "Octopus environment to deploy project to",
+      "defaultValue": "",
+      "helpMarkDown": "The environment name that the project should be deployed to.",
+      "required": true
+    },
+	{
+      "name": "octoDeploymentStepName",
+      "type": "string",
+      "label": "Octopus deployment step name",
+      "defaultValue": "",
+      "helpMarkDown": "Name of the Octopus step that will be used to deploy the code.  Needed to set the package version to deploy.",
+      "required": true
+    },
+    {
+      "name": "connectedServiceName",
+      "type": "connectedService:Generic",
+      "label": "Octopus Server Endpoint",
+      "required": true,
+      "helpMarkDown": "The Octopus server generic endpoint, set the key 'Password/Token Key' field to your Octopus API key."
+    },
+    {
+      "name": "specifyVersion",
+      "type": "boolean",
+      "label": "Specify version?",
+      "defaultValue": "false",
+      "helpMarkDown": "If selected the version number to deploy will need to be specified instead of using the default which pulls from the build number in the format of $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfYear)$(rev:.r) resulting in yyyy.mm.ddd.r as the Octopus deploy version."
+    },
+	{
+      "name": "specificVersionNumber",
+      "type": "string",
+      "label": "Version to deploy",
+      "defaultValue": "",
+      "helpMarkDown": "Version that should be deployed by Octopus.",
+      "required": false,
+	  "visibleRule": "specifyVersion = true"
+    },
+	{
+      "name": "deployRelease",
+      "type": "boolean",
+      "label": "Deploy release?",
+      "defaultValue": "false",
+      "helpMarkDown": "Select if the Octopus release should be deployed as part of this build task."
+    }
+  ],
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\OctopusDeployer.ps1",
+      "argumentFormat": "",
+      "workingDirectory": ""
+    }
+  }
+}
