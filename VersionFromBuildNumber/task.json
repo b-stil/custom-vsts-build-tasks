@@ -1,0 +1,23 @@
+{
+  "id": "BB89FA91-4C2B-42A3-A4D1-F77EC6EF7AB1",
+  "name": "VersionFromBuild",
+  "friendlyName": "Version From Build",
+  "description": "Version assemblies based on the Build Number with a pattern format of 'd+.d+.d+.d+'",
+  "helpMarkDown": "A build with a 'build number format' of $(BuildDefinitionName)_$(Year:yy).$(Month).$(DayOfYear)$(Rev:.r) will apply version as 2016.04.105.3",
+  "category": "Build",
+  "author": "B Stilson",
+  "version": {
+    "Major": 1,
+    "Minor": 1,
+    "Patch": 4
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Apply version based on build number",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\ApplyVersionFromBuildNumber.ps1",
+      "argumentFormat": "",
+      "workingDirectory": ""
+    }
+  }
+}
