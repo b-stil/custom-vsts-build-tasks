@@ -124,11 +124,19 @@ if(!$projectId){
     throw "Unable to determine projectId for release"
 }
 
+$selectedPackages = @()
+$octoDeploymentSteps = $octoDeploymentStepName.split(',')
+foreach($step in $octoDeploymentSteps)
+{
+    $selectedPackages += "{`"StepName`":`"$step`", `"Version`":`"$buildVersion`"}"  
+}
+$selectedPackages = $selectedPackages -join ','
+
 $ReleaseBody =  @"
 {
     "Projectid": "$projectId",
     "Version": "$buildVersion",
-    "SelectedPackages":[{"StepName":"$octoDeploymentStepName", "Version":"$buildVersion"}]
+    "SelectedPackages":[$selectedPackages]
 }
 "@
 
