@@ -8,8 +8,8 @@
   "author": "B Stilson",
   "version": {
     "Major": 1,
-    "Minor": 4,
-    "Patch": 2
+    "Minor": 5,
+    "Patch": 1
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "Octopus Deployer",
@@ -35,7 +35,7 @@
       "type": "string",
       "label": "Octopus deployment step name",
       "defaultValue": "",
-      "helpMarkDown": "Name of the Octopus step that will be used to deploy the code.  Needed to set the package version to deploy.",
+      "helpMarkDown": "Name of the Octopus step that will be used to deploy the code.  Needed to set the package version to deploy.  *If there are multiple deployment steps in a project process use a comma to separate the deployment step names.",
       "required": true
     },
     {
