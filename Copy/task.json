@@ -1,0 +1,41 @@
+{
+  "id": "{8107DA5D-5E6B-412E-9BD6-D6BA591C881F}",
+  "name": "Copy",
+  "friendlyName": "Copy",
+  "description": "Copies a directory and all of it's contents or an individual file",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "B Stilson",
+  "version": {
+    "Major": 1,
+    "Minor": 2,
+    "Patch": 1
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Copy",
+  "inputs": [
+    {
+      "name": "source",
+      "type": "string",
+      "label": "Source",
+      "defaultValue": "",
+      "helpMarkDown": "The source directory or file to copy.",
+      "required": true
+    },
+    {
+      "name": "destination",
+      "type": "string",
+      "label": "Destination",
+      "defaultValue": "",
+      "helpMarkDown": "The location the source directory or file should be copied to.",
+      "required": true
+    }
+  ],
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\Copy.ps1",
+      "argumentFormat": "",
+      "workingDirectory": ""
+    }
+  }
+}
