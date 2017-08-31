@@ -10,6 +10,9 @@ Contents
 AddTaskToTFS.ps1
 > - This Powershell script interacts with the VSTS API to allow you to add a new build task.
 
+Copy
+> - Build task that can copy an entire directory and all of it's contents or individual files.
+
 Octopus Deployer
 > - Build task that gives the ability to push a Release and/or Deployment to your Octopus server.
 
